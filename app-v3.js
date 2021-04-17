@@ -827,18 +827,17 @@ function file_video(path) {
 	  <label class="mdui-textfield-label">HTML 引用地址</label>
 	  <textarea class="mdui-textfield-input"><video><source src="${url}" type="video/mp4"></video></textarea>
 	</div>
-//添加字幕渲染
   <script>
+  var url = "http://community.csdn.net/Expert/PostNew.asp"
 const dp = new DPlayer({
 	container: document.getElementById('dplayer'),
 	lang:'zh-cn',
 	video: {
-	    url: '<?php e($item['downloadUrl']);?>',
-	    pic: '<?php @e($item['thumb']);?>',
+	    url: '${url}',
 	    type: 'auto'
 	},
       subtitle: {
-        url: '<?php $urlparts = pathinfo($url); e($urlparts['dirname'].'/'.$urlparts['filename'].'.vtt');?>',
+        url: 'let file = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.') ).vtt',
         type: 'webvtt',
         fontSize: '15px',
         bottom: '5%',
@@ -868,7 +867,6 @@ dp.on('canplay', function () {
 });
 });
 </script>
-//结束
 </div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
 	`;
